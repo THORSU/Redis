@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+用户名：<input type="text" id="username" placeholder="请输入用户名"/><br>
+密  码：<input type="password" id="password" placeholder="请输入密码"/> <br>
+<input type="button" value="登陆"  onclick="login()"/>
+</body>
+<script type="text/javascript">
+//    $(document).ready(function () {
+//        $.ajax({
+//            type: "get",
+//            url: "/night/getUser.from",
+//            dataType: "html",
+//            success: function (msg) {
+//                alert(msg);
+//            }
+//        })
+//    })
+
+    function login(){
+        var username=$("#username").val();
+        var password=$("#password").val();
+        $.ajax({
+            type: "post",
+            url: "/night/loginnew.from?username="+username+"&password="+password+"",
+            dataType: "html",
+            success: function (msg) {
+               if(msg=="1"){
+                   window.location.href="welcome.html";
+               }
+                else if(msg=="0"){
+                   alert("登陆失败！")
+               }
+            }
+        })
+    }
+
+</script>
+</html>

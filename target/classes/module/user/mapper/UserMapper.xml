@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cxd.mapper.UserMapper">
+	<resultMap type="com.cxd.pojo.User" id="UserInfoResult">
+	    <id column="sid" property="sid"/>
+		<result property="sname" column="sname"/>
+		<result property="spassword" column="spassword"/>
+		<result property="smobile" column="smobile"/>
+	</resultMap>
+
+    <!-- 通过id查找用户 -->
+    <select id="getUserById" parameterType="String" resultMap="UserInfoResult">
+        select * from user where sid=#{sid}
+    </select>
+    <select id="login" parameterType="com.cxd.pojo.User" resultMap="UserInfoResult">
+        select * from user where sname=#{sname} and spassword=#{spassword}
+    </select>
+
+</mapper> 
