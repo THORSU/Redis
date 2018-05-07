@@ -53,6 +53,7 @@ public class UserOperationsServiceImpl implements UserOperationsService {
 
 
 
+	@Override
 	public void deldate(String key) {
 		ValueOperations<String, User> valueops = redisTemplate.opsForValue();
 		RedisOperations<String, User> ro=valueops.getOperations();

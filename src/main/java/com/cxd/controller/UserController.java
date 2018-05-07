@@ -33,7 +33,7 @@ public class UserController {
     private UserOperationsServiceImpl userOperationsService;//redis操作类
     @Autowired
     private UserService userService;//mysql数据库操作类
-    private User user;
+    private User user=new User();
     private String sessionkey="";
 
     @RequestMapping(value = "/login.from", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
@@ -55,7 +55,6 @@ public class UserController {
 
             }
             if (sessionkey.equals("")) {
-                user = new User();
                 user.setSname(username);
                 user.setSpassword(password);
                 User temp = userService.login(user);
@@ -79,7 +78,6 @@ public class UserController {
                         return "1";
                     }
                     else {
-                        user = new User();
                         user.setSname(username);
                         user.setSpassword(password);
                         User temp = userService.login(user);
@@ -103,7 +101,6 @@ public class UserController {
                 }
             }
         } else {
-            user = new User();
             user.setSname(username);
             user.setSpassword(password);
             User temp = userService.login(user);
